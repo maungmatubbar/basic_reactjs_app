@@ -14,7 +14,11 @@ export default function TextForm(props) {
         //console.log('On Changed');
         setText(event.target.value)
     }
-    const [text, setText] = useState("Enter Text");
+    const handleClearClick = ()=>{
+      let newText = '';
+      setText(newText);
+    }
+    const [text, setText] = useState("");
   return (
     <div>
       <div className="card">
@@ -25,6 +29,7 @@ export default function TextForm(props) {
             <textarea name="" id="convertText" value={text} onChange={handleOnChange} cols="30" rows="10" className='form-control'></textarea>
             <button className='btn btn-primary mt-2 mx-1' onClick={handleUpClick}>Convert to Uppercase</button>
             <button className='btn btn-primary mt-2 mx-1' onClick={handleLoClick}>Convert to Lowercase</button>
+            <button className='btn btn-primary mt-2 mx-1' onClick={handleClearClick}>Clear Text</button>
         </div>
         <div className="card-footer">
           <h2>Your text summary</h2>
