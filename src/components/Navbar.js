@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 export default function Navbar(props) {
   return (
-    <div>
-        <div className="container">
-            <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
+    <>
+        <nav className={`navbar navbar-expand-sm navbar-${props.mode} bg-${props.mode}`}>
+            <div className="container-fluid">
                 <a className="navbar-brand" href="/">{props.title}</a>
                 <div className="collapse navbar-collapse" id="collapsibleNavId">
                     <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -21,10 +21,14 @@ export default function Navbar(props) {
                             <a className="nav-link" href="/">Contact</a>
                         </li>
                     </ul>
+                    <div className={`d-flex form-check form-switch text-${props.mode==='light'?'dark':'light'}`}>
+                        <input className="form-check-input" onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+                        <label className="form-check-label" htmlFor="flexSwitchCheckDefault">{props.mode==='light'?'Dark':'Light'} Mode</label>
+                    </div>
                 </div>
-            </nav>
-        </div>
-    </div>
+            </div>
+        </nav>
+    </>
   )
 }
 
